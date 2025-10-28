@@ -215,7 +215,7 @@ with gr.Blocks(css=css, theme=gr.themes.Soft(primary_hue="teal")) as demo:
                
         with gr.Column(scale=1):
             with gr.Group(elem_classes="snsdt"):
-                gr.Markdown("## Upload Soil Image")
+                gr.Markdown("## Upload Leaf Image")
                 image_input = gr.Image(label="Upload an image", type="pil")
                 img_btn = gr.Button(" Analyze Image")
 
