@@ -1,29 +1,29 @@
 
-# 🌱 Ecocatalysts: Soil Sensing and Recommendation Intelligence System
+#  Ecocatalysts: Soil Sensing and Recommendation Intelligence System
 
 Welcome to **Ecocatalysts**, an AI-powered smart soil monitoring and recommendation system! This application is designed to help farmers, agricultural experts, and hobbyists evaluate soil quality, detect anomalies in sensor data, generate actionable recommendations using a Large Language Model (LLM), and identify plant diseases from leaf images.
 
-🌍 **Live Demo:** [Check out the Gradio app on Hugging Face Spaces](https://huggingface.co/spaces/sleepy-panda21/Ecocatalysts)
+ **Live Demo:** [Check out the Gradio app on Hugging Face Spaces](https://huggingface.co/spaces/sleepy-panda21/Ecocatalysts)
 
 ---
 
-## 🚀 Key Features & 🧠 Models Used
+##  Key Features &  Models Used
 
 This project relies on a multi-model architecture to process different types of agricultural data. Here is a detailed breakdown of the algorithms and pre-trained models implemented:
 
-### 1. 📊 Soil Data Anomaly Detection (`iso_model.pkl`)
+### 1.  Soil Data Anomaly Detection (`iso_model.pkl`)
 - **Purpose:** To detect complex, multivariate statistical anomalies within soil data that simple threshold checks might miss.
 - **Model:** **Isolation Forest** (implemented via `scikit-learn`).
 - **Data Preprocessing:** Inputs (Nitrogen, Phosphorus, Potassium, pH, and Temperature) are transformed using a fitted **Standard Scaler** (`scaler.pkl`) before being passed into the model.
 - **Rule-based Evaluation:** The ML model is supplemented by static threshold rules to generate human-readable warnings (e.g., highlighting highly acidic soil [pH < 5.5], low nitrogen levels [< 240], or dangerous temperatures).
 
-### 2. 🤖 LLM-Based Soil Health Recommendations (`soil_llm.py`)
+### 2.  LLM-Based Soil Health Recommendations (`soil_llm.py`)
 - **Purpose:** To act as an AI agronomist, providing customized, actionable advice to improve crop yield and soil health based on the current readings.
 - **Pre-trained Model:** **`TinyLlama/TinyLlama-1.1B-chat-v1.0`**
 - **Implementation:** The model is fetched via Hugging Face `transformers` and runs inference locally on the CPU using PyTorch (`torch`).
 - **Prompt Engineering:** The system concatenates the 7 core soil parameters (including Moisture and EC) along with the detected anomalies into a context-aware prompt, asking the TinyLlama model to generate detailed recommendations.
 
-### 3. 🍃 Plant Disease Image Analysis (`plant_disease_model.keras`)
+### 3.  Plant Disease Image Analysis (`plant_disease_model.keras`)
 - **Purpose:** A computer vision module designed to analyze plant leaves and predict diseases instantly.
 - **Model Architecture:** A deep learning vision model built and serialized using **TensorFlow / Keras**.
 - **Data Pipeline:** 
@@ -48,7 +48,7 @@ This project relies on a multi-model architecture to process different types of 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 - `app.py`: The main Gradio application script that renders the UI and integrates the anomaly, CV, and LLM models.
 - `soil_llm.py`: Handles the local execution of the TinyLlama LLM and cleans the generated output.
